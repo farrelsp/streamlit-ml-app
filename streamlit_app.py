@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 
 st.title('🐧 Penguin Predictor App')
 
@@ -60,7 +62,7 @@ encode = ['island', 'sex']
 df_penguins = pd.get_dummies(combined_df, prefix=encode)
 
 X = df_penguins[1:]
-input_enc = df_penguins[:1]
+input_row = df_penguins[:1]
 
 # Encode y
 target_map = {
@@ -76,6 +78,16 @@ y = y_raw.apply(mapping)
 
 with st.expander("Data Preparation"):
   st.write("**Encoded X (Input penguin)**")
-  input_enc
+  input_row
   st.write("**Encoded y**")
   y
+
+# Model training
+model = RandomForestClassifier()
+model.fit(X, y)
+
+# Predict
+prediction = model.predict(input_row)
+prediction_proba = model.predict_proba(input_row)
+
+prediction
