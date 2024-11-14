@@ -26,7 +26,7 @@ with st.expander('Data Visualization'):
                    y_label='Body mass (g)',
                    color='species')
 
-# Data preparations
+# Input feature
 with st.sidebar:
   st.header('Input features')
   island = st.selectbox('Island', ('Torgersen', 'Biscoe', 'Dream'))
@@ -42,7 +42,7 @@ input_data = {
   "bill_depth_mm": bill_depth_mm,
   "flipper_length_mm": flipper_length_mm,
   "body_mass_g": body_mass_g,
-  "gender": gender
+  "sex": gender
 }
 
 input_df = pd.DataFrame(input_data, index=[0])
@@ -54,3 +54,8 @@ with st.expander('Input Features'):
   st.write("**Combined penguins data**")
   combined_df
   
+# Data preparation
+# Encode X
+encode = ['island', 'sex']
+df_penguins = pd.get_dummies(combined_df, prefix=encode)
+df_penguins
