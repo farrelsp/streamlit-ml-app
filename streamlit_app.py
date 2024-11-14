@@ -90,4 +90,10 @@ model.fit(X, y)
 prediction = model.predict(input_row)
 prediction_proba = model.predict_proba(input_row)
 
-prediction
+df_prediction_proba = pd.DataFrame(prediction_proba)
+df_prediction_proba.columns = ["Adelie", "Gentoo", "Chinstrap"]
+df_prediction_proba.rename(columns={0: "Adelie", 1: "Gentoo", 2: "Chinstrap"})
+
+# Display prediction
+st.subheader("Predicted Species")
+st.dataframe(df_prediction_proba)
