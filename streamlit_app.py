@@ -30,6 +30,6 @@ with st.sidebar:
   island = st.selectbox('Island', ('Torgersen', 'Biscoe', 'Dream'))
   gender = st.selectbox('Gender', ('male', 'female'))
   bill_length_mm = st.slider('Bill length (mm)', 
-                             df['df.bill_length_mm'].min(), 
+                             df['bill_length_mm'].min(), 
                              df['bill_length_mm'].max(), 
                              df['bill_length_mm'].mean())
