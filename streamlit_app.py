@@ -25,3 +25,11 @@ with st.expander('Data Visualization'):
                    x_label='Bill length (mm)',
                    y_label='Body mass (g)',
                    color='species')
+with st.sidebar:
+  st.header('Input features')
+  island = st.selectbox('Island', ('Torgersen', 'Biscoe', 'Dream'))
+  gender = st.selectbox('Gender', ('male', 'female')
+  bill_length_mm = st.slider('Bill length (mm)', 
+                             df['df.bill_length_mm'].min(), 
+                             df['bill_length_mm'].max(), 
+                             df['bill_length_mm'].mean())
